@@ -1,0 +1,36 @@
+---
+import Layout from "@layouts/Base.astro";
+---
+
+<Layout>
+    <h1>Register</h1>
+    <form id="signup-form">
+        <input type="text" name="name" placeholder="Name" required />
+        <input type="email" name="email" placeholder="Email" required />
+        <input
+            required
+            type="password"
+            name="password"
+            placeholder="Password"
+        />
+        <button type="submit">Sign up</button>
+    </form>
+    <p>Already have an account? <a href="/login">Sign in here</a>.</p>
+</Layout>
+<script>
+    import { authClient } from "@utils/client/auth-client";
+    document
+        .getElementById("signup-form")
+        ?.addEventListener("submit", async (event) => {
+            event.preventDefault();
+            const name = event.target?.name.value;
+            const email = event.target?.email.value;
+            const password = event.target?.password.value;
+            const tmp = await authClient.signUp.email({
+                name,
+                email,
+                password,
+            });
+            if (Boolean(tmp.error) === false) window.location.href = "/";
+        });
+</script>

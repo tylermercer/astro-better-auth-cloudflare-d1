@@ -1,11 +1,14 @@
 ---
-import Welcome from '@components/Welcome.astro';
-import Layout from '@layouts/Base.astro';
+import Layout from "@layouts/Base.astro";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+if (!Astro.locals.session) {
+	// Redirect to login page if the user is not authenticated
+	return Astro.redirect(`/login?returnUrl=${encodeURIComponent(Astro.url.pathname)}`);
+}
+
+export const prerender = false;
 ---
 
 <Layout>
-	<Welcome />
+	<h1>My Notes</h1>
 </Layout>
