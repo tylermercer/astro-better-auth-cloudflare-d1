@@ -1,26 +1,21 @@
 import { betterAuth } from "better-auth";
-import { LibsqlDialect } from "@libsql/kysely-libsql";
+import type { Kysely } from "kysely";
 
-function constructAuth(url: string, authToken: string, betterAuthSecret: string) {
-  const dialect = new LibsqlDialect({
-    url,
-    authToken,
-})
-
+function constructAuth(db: Kysely<unknown>, betterAuthSecret: string) {
   return betterAuth({
     secret: betterAuthSecret,
     database: {
-      dialect,
-      type: "sqlite"
-    },
-    emailAndPassword: {  
-        enabled: true
+      db,
+      type: "sqlite",
+  },
+    emailAndPassword: {
+      enabled: true
     },
   });
 }
 
-export let auth: ReturnType<typeof constructAuth>; 
+export let auth: ReturnType<typeof constructAuth>;
 
-export function initAuth(url: string, authToken: string, betterAuthSecret: string) {
-  auth = constructAuth(url, authToken, betterAuthSecret);
+export function initAuth(db: Kysely<unknown>, betterAuthSecret: string) {
+  auth = constructAuth(db, betterAuthSecret);
 }

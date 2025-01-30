@@ -11,6 +11,7 @@
   "dependencies": {
     "@astrojs/cloudflare": "^12.2.1",
     "@libsql/kysely-libsql": "^0.4.1",
+    "@noxharmonium/kysely-d1": "^0.4.0",
     "astro": "^5.1.10",
     "better-auth": "^1.1.14",
     "sass": "^1.63.6",
