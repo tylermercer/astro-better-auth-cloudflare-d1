@@ -5,3 +5,8 @@ compatibility_date = "2024-12-04"
 
 [limits]
 cpu_ms = 150
+
+[[d1_databases]]
+binding = "DB"
+database_name = "prod"
+database_id = "d5757f62-76bc-47d4-ae61-c70ad3995985"
