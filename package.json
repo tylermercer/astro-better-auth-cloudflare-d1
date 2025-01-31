@@ -1,12 +1,14 @@
 {
-  "name": "astro-cloudflare-starter",
+  "name": "daily-notes-app",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
     "dev": "wrangler types && astro dev",
     "build": "wrangler types && astro build",
     "preview": "wrangler types && astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "auth:migrate": "npx @better-auth/cli migrate --config better-auth.config.ts",
+    "postinstall": "patch-package"
   },
   "dependencies": {
     "@astrojs/cloudflare": "^12.2.1",
@@ -14,12 +16,14 @@
     "@noxharmonium/kysely-d1": "^0.4.0",
     "astro": "^5.1.10",
     "better-auth": "^1.1.14",
+    "kysely-d1-external": "^1.0.3",
     "sass": "^1.63.6",
     "satori": "^0.12.1",
     "satori-html": "^0.3.2",
     "sharp": "^0.33.5"
   },
   "devDependencies": {
+    "patch-package": "^8.0.0",
     "wrangler": "^3.92.0"
   }
 }

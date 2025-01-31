@@ -7,7 +7,7 @@ function constructAuth(db: Kysely<unknown>, betterAuthSecret: string) {
     database: {
       db,
       type: "sqlite",
-  },
+    },
     emailAndPassword: {
       enabled: true
     },
@@ -16,6 +16,7 @@ function constructAuth(db: Kysely<unknown>, betterAuthSecret: string) {
 
 export let auth: ReturnType<typeof constructAuth>;
 
-export function initAuth(db: Kysely<unknown>, betterAuthSecret: string) {
+export function initAuth(db: Kysely<unknown>, betterAuthSecret: string): ReturnType<typeof constructAuth> {
   auth = constructAuth(db, betterAuthSecret);
+  return auth;
 }
