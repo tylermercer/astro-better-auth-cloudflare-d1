@@ -1,4 +1,10 @@
-# Astroflare
+# Astro SSR + Better-Auth + Cloudflare D1
+
+A working but _extremely_ unpolished setup for an MPA with Astro, Better-Auth, and Cloudflare D1. Proceed with caution.
+
+Based on [tylermercer/astro-cloudflare-starter](https://github.com/tylermercer/astro-cloudflare-starter) (README below).
+
+---
 
 An opinionated starter for Astro on Cloudflare, based on the setup I use for [Innerhelm](https://innerhelm.com), [Evelyn Escobar Art](https://evelynescobar.art), [my personal site](https://tylermercer.net), and other projects.
 
