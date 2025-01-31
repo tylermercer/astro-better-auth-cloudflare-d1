@@ -1,6 +1,6 @@
 import { initAuth } from "@utils/auth";
 import { Kysely } from "kysely";
-import { D1ExternalDialect } from 'kysely-d1-external';
+import { D1ExternalDialect } from './lib/kysely-d1-external/D1ExternalDialect';
 
 export const auth = initAuth(
     new Kysely({

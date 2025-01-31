@@ -8,8 +8,7 @@
     "preview": "wrangler types && astro preview",
     "astro": "astro",
     "auth:migrate": "npx @better-auth/cli migrate --config better-auth.config.ts",
-    "auth:local:migrate": "npx @better-auth/cli migrate --config better-auth.config.local.ts",
-    "postinstall": "patch-package"
+    "auth:local:migrate": "npx @better-auth/cli migrate --config better-auth.config.local.ts"
   },
   "dependencies": {
     "@astrojs/cloudflare": "^12.2.1",
@@ -27,7 +26,6 @@
     "@miniflare/d1": "^2.14.4",
     "@miniflare/shared": "^2.14.4",
     "better-sqlite3": "^11.8.1",
-    "patch-package": "^8.0.0",
     "wrangler": "^3.92.0"
   }
 }
