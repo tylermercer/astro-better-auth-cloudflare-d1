@@ -1,6 +1,8 @@
 # Astro SSR + Better-Auth + Cloudflare D1
 
-A working but _extremely_ unpolished setup for an MPA with Astro, Better-Auth, and Cloudflare D1. Proceed with caution.
+A working but unpolished setup for an MPA with Astro, Better-Auth, and Cloudflare D1.
+
+> **TODO:** Document needed environment variables and setup steps.
 
 Based on [tylermercer/astro-cloudflare-starter](https://github.com/tylermercer/astro-cloudflare-starter) (README below).
 
