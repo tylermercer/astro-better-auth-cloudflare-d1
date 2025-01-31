@@ -33,15 +33,15 @@ jobs:
         with:
           token: ${{ secrets.GH_PAT }}
 
-      - name: Cache assets
-        uses: actions/cache@v3
-        with:
-          path: | # .cache is for any user-land caching. E.g. in some of my projects I cache rendered OG images
-            .cache
-            node_modules/.astro
-          key: assets-${{ github.run_id }} # Save each run's cache
-          restore-keys: | # Restore most recent cache
-            assets-
+      # - name: Cache assets
+      #   uses: actions/cache@v3
+      #   with:
+      #     path: | # .cache is for any user-land caching. E.g. in some of my projects I cache rendered OG images
+      #       .cache
+      #       node_modules/.astro
+      #     key: assets-${{ github.run_id }} # Save each run's cache
+      #     restore-keys: | # Restore most recent cache
+      #       assets-
 
       - name: Extract variables
         id: extract_vars
