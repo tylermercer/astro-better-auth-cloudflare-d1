@@ -1,27 +1,18 @@
 ---
 import Layout from "@layouts/Base.astro";
 
-if (!Astro.locals.session) {
-	// Redirect to login page if the user is not authenticated
-	return Astro.redirect(
-		// `/login?returnUrl=${encodeURIComponent(Astro.url.pathname)}`,
-		`/login`,
-	);
-}
+export const prerender = true;
 ---
 
 <Layout>
-	<h1>My Notes</h1>
-	{JSON.stringify(Astro.locals.user)}
-	<button id="signOutButton">Sign Out</button>
+    <h1>Astro MPA example</h1>
+    <p>
+        This is a simple example of an MPA with built with Astro, Better-Auth,
+        and Cloudflare D1.
+    </p>
+    <p>
+        (This is a static marketing page; click "Go to app" to log in to the
+        app)
+    </p>
+    <p><a href="/app/">Go to app</a></p>
 </Layout>
-
-<script>
-	import { authClient } from "@utils/client/auth-client";
-	document
-		.getElementById("signOutButton")
-		?.addEventListener("click", async () => {
-			await authClient.signOut();
-			window.location.href = "/login";
-		});
-</script>
