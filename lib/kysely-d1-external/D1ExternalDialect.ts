@@ -12,6 +12,7 @@ import {
   SqliteIntrospector,
   SqliteQueryCompiler
 } from 'kysely'
+import { D1Introspector } from './D1Introspector'
 
 export interface D1ExternalDialectConfig {
   accountId: string
@@ -45,7 +46,7 @@ export class D1ExternalDialect implements Dialect {
   }
 
   createIntrospector<T>(db: Kysely<T>): DatabaseIntrospector {
-    return new SqliteIntrospector(db)
+    return new D1Introspector(db)
   }
 }
 
