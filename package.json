@@ -14,7 +14,7 @@
     "@astrojs/cloudflare": "^12.2.1",
     "@libsql/kysely-libsql": "^0.4.1",
     "@noxharmonium/kysely-d1": "^0.4.0",
-    "astro": "^5.1.10",
+    "astro": "^5.2.3",
     "better-auth": "^1.1.14",
     "kysely-d1-external": "^1.0.3",
     "sass": "^1.63.6",
