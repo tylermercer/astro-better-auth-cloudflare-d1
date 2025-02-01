@@ -32,6 +32,7 @@ export default defineConfig({
         'path',
         'sharp',
         'esbuild',
+        'buffer',
       ].flatMap(id => [id, `node:${id}`]),
     },
     css: {
