@@ -18,7 +18,7 @@ export const prerender = true;
             />
             <button type="submit">Sign up</button>
         </form>
-        <p>Already have an account? <a href="/app/login">Sign in here</a>.</p>
+        <p>Already have an account? <a href="/login">Sign in here</a>.</p>
     </main>
 </Layout>
 <script>
@@ -35,6 +35,6 @@ export const prerender = true;
                 email,
                 password,
             });
-            if (Boolean(tmp.error) === false) window.location.href = "/";
+            if (Boolean(tmp.error) === false) window.location.href = "/app/";
         });
 </script>
