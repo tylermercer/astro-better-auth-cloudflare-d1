@@ -1,0 +1,92 @@
+@use "sass:list";
+@use "sass:map";
+@function generate-css-variables($prefix, $scale, $alpha-scale, $surface, $contrast) {
+    $output: (
+    );
+
+@for $i from 1 through list.length($scale) {
+    $output: map.merge($output, ('--#{$prefix}-#{$i}': list.nth($scale, $i)));
+    $output: map.merge($output, ('--#{$prefix}-a#{$i}': list.nth($alpha-scale, $i)));
+}
+
+$output: map.merge($output, ('--#{$prefix}-surface': $surface,
+            '--#{$prefix}-contrast': $contrast,
+            '--#{$prefix}-indicator': list.nth($scale, 9),
+            '--#{$prefix}-track': list.nth($scale, 9)));
+
+@return $output;
+}
+
+@function generate-wide-gamut-css-variables($prefix, $wide-gamut-scale, $wide-gamut-alpha-scale, $surface-wide-gamut, $contrast) {
+    $output: (
+    );
+
+@for $i from 1 through list.length($wide-gamut-scale) {
+    $output: map.merge($output, ('--#{$prefix}-#{$i}': list.nth($wide-gamut-scale, $i)));
+    $output: map.merge($output, ('--#{$prefix}-a#{$i}': list.nth($wide-gamut-alpha-scale, $i)));
+}
+
+$output: map.merge($output, ('--#{$prefix}-surface': $surface-wide-gamut,
+            '--#{$prefix}-contrast': $contrast,
+            '--#{$prefix}-indicator': list.nth($wide-gamut-scale, 9),
+            '--#{$prefix}-track': list.nth($wide-gamut-scale, 9)));
+
+@return $output;
+}
+
+// Mixin to output the CSS variables
+@mixin output-css-variables($vars) {
+    @each $key, $value in $vars {
+        #{$key}: #{$value};
+    }
+}
+
+@mixin generateRadixScales($appearance, $accent, $gray, $background) {
+
+    // Generate scales by invoking TS custom function
+    $colors: generateRadixColors($appearance, '#{$accent}', '#{$gray}', '#{$background}');
+
+    // Generate CSS variables for accent and gray scales
+    $accent-vars: generate-css-variables('primary',
+            map.get($colors, 'accentScale'),
+            map.get($colors, 'accentScaleAlpha'),
+            map.get($colors, 'accentSurface'),
+            map.get($colors, 'accentContrast'));
+
+    $accent-vars-wide-gamut: generate-wide-gamut-css-variables('primary',
+            map.get($colors, 'accentScaleWideGamut'),
+            map.get($colors, 'accentScaleAlphaWideGamut'),
+            map.get($colors, 'accentSurfaceWideGamut'),
+            map.get($colors, 'accentContrast'));
+
+    $gray-vars: generate-css-variables('gray',
+            map.get($colors, 'grayScale'),
+            map.get($colors, 'grayScaleAlpha'),
+            map.get($colors, 'graySurface'),
+            map.get($colors, 'grayContrast'));
+
+    $gray-vars-wide-gamut: generate-wide-gamut-css-variables('gray',
+            map.get($colors, 'grayScaleWideGamut'),
+            map.get($colors, 'grayScaleAlphaWideGamut'),
+            map.get($colors, 'graySurfaceWideGamut'),
+            map.get($colors, 'grayContrast'));
+
+    // Output the CSS for :root and .light-theme
+    .#{$appearance},
+    .#{$appearance}-theme {
+        @include output-css-variables($accent-vars);
+        @include output-css-variables($gray-vars);
+    }
+
+    @supports (color: color(display-p3 1 1 1)) {
+        @media (color-gamut: p3) {
+
+            :root,
+            .#{$appearance},
+            .#{$appearance}-theme {
+                @include output-css-variables($accent-vars-wide-gamut);
+                @include output-css-variables($gray-vars-wide-gamut);
+            }
+        }
+    }
+}

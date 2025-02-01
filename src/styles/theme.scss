@@ -1,0 +1,103 @@
+@use 'node_modules/utopia-core-scss/src/utopia' as utopia;
+@use '../../lib/plugins/sass/radix-ui-colors/radix-color-mixin.scss' as radix;
+
+@layer theme {
+    :root {
+        /* @link https://utopia.fyi/space/calculator?c=320,18,1.2,1240,20,1.25,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
+        // @include utopia.generateSpaceScale(("minWidth": 320,
+        //         "maxWidth": 1240,
+        //         "minSize": 16,
+        //         "maxSize": 16,
+        //         "positiveSteps": (1.5, 2, 3, 4, 6),
+        //         "negativeSteps": (0.75, 0.5, 0.25),
+        //         "customSizes": ("s-l"),
+        //         "prefix": "space-",
+        //     ));
+        // /* @link https://utopia.fyi/type/calculator?c=320,18,1.2,1240,20,1.25,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
+        // @include utopia.generateTypeScale(("minWidth": 320,
+        //         "maxWidth": 1240,
+        //         "minFontSize": 16,
+        //         "maxFontSize": 16,
+        //         "minTypeScale": 1.2,
+        //         "maxTypeScale": 1.2,
+        //         "positiveSteps": 5,
+        //         "negativeSteps": 2,
+        //         "prefix": "step-",
+        //     ));
+
+        // Generated using the above Utopia code
+        --space-3xs: 0.25rem;
+        --space-2xs: 0.5rem;
+        --space-xs: 0.75rem;
+        --space-s: 1rem;
+        --space-m: 1.5rem;
+        --space-l: 2rem;
+        --space-xl: 3rem;
+        --space-2xl: 4rem;
+        --space-3xl: 6rem;
+        --space-3xs-2xs: clamp(0.25rem, 0.163rem + 0.4348vi, 0.5rem);
+        --space-2xs-xs: clamp(0.5rem, 0.413rem + 0.4348vi, 0.75rem);
+        --space-xs-s: clamp(0.75rem, 0.663rem + 0.4348vi, 1rem);
+        --space-s-m: clamp(1rem, 0.8261rem + 0.8696vi, 1.5rem);
+        --space-m-l: clamp(1.5rem, 1.3261rem + 0.8696vi, 2rem);
+        --space-l-xl: clamp(2rem, 1.6522rem + 1.7391vi, 3rem);
+        --space-xl-2xl: clamp(3rem, 2.6522rem + 1.7391vi, 4rem);
+        --space-2xl-3xl: clamp(4rem, 3.3043rem + 3.4783vi, 6rem);
+        --step--2: 0.6944rem;
+        --step--1: 0.8333rem;
+        --step-0: 1rem;
+        --step-1: 1.2rem;
+        --step-2: 1.44rem;
+        --step-3: 1.728rem;
+        --step-4: 2.0736rem;
+        --step-5: 2.4883rem;
+
+        //Fonts
+        //System UI from modernfontstacks.com
+        --font-body: system-ui, sans-serif;
+        //Figtree on Industrial from modernfontstacks.com
+        --font-heading: 'Figtree Variable', 'DIN Alternate', 'Franklin Gothic Medium', 'Nimbus Sans Narrow', sans-serif-condensed, sans-serif;
+
+        //Line heights
+        --lh--2: 2.10;
+        --lh--1: 1.80;
+        --lh-0: 1.60;
+        --lh-1: 1.30;
+        --lh-2: 1.10;
+        --lh-3: 1;
+        --lh-4: 1;
+        --lh-5: 1;
+
+        //Necessary to scale with system preference on iOS
+        font: -apple-system-body;
+
+        @supports (font: -apple-system-body) and (not (-webkit-touch-callout: default)) {
+            font-size: 100%;
+        }
+    }
+
+    $themeColor: #1f2d61;
+    $grayColor: #8b8d98;
+
+    @include radix.generateRadixScales('light',
+        $themeColor,
+        $grayColor,
+        #ffffff);
+
+    @include radix.generateRadixScales('dark',
+        $themeColor,
+        $grayColor,
+        #111111);
+
+    .light {
+        color-scheme: light;
+        --danger: #d3003c;
+        --danger-alt: #a3002f;
+    }
+
+    .dark {
+        color-scheme: dark;
+        --danger: #d02354;
+        --danger-alt: #fd316b;
+    }
+}

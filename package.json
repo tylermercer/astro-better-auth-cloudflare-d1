@@ -12,15 +12,22 @@
   },
   "dependencies": {
     "@astrojs/cloudflare": "^12.2.1",
+    "@fontsource-variable/figtree": "^5.1.2",
     "@libsql/kysely-libsql": "^0.4.1",
     "@noxharmonium/kysely-d1": "^0.4.0",
+    "@radix-ui/colors": "^3.0.0",
     "astro": "^5.2.3",
     "better-auth": "^1.1.14",
+    "bezier-easing": "^2.1.0",
+    "colorjs.io": "^0.5.2",
+    "immutable": "^5.0.3",
     "kysely-d1-external": "^1.0.3",
+    "modern-normalize": "^3.0.1",
     "sass": "^1.63.6",
     "satori": "^0.12.1",
     "satori-html": "^0.3.2",
-    "sharp": "^0.33.5"
+    "sharp": "^0.33.5",
+    "utopia-core-scss": "^1.2.1"
   },
   "devDependencies": {
     "@miniflare/d1": "^2.14.4",
