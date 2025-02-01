@@ -5,18 +5,20 @@ export const prerender = true;
 ---
 
 <Layout>
-    <h1>Login</h1>
-    <form id="signin-form">
-        <input type="email" name="email" placeholder="Email" required />
-        <input
-            required
-            type="password"
-            name="password"
-            placeholder="Password"
-        />
-        <button type="submit">Sign In</button>
-    </form>
-    <p>Don't have an account? <a href="/app/register">Sign up here</a>.</p>
+    <main class="u-guttered">
+        <h1>Login</h1>
+        <form id="signin-form">
+            <input type="email" name="email" placeholder="Email" required />
+            <input
+                required
+                type="password"
+                name="password"
+                placeholder="Password"
+            />
+            <button type="submit">Sign In</button>
+        </form>
+        <p>Don't have an account? <a href="/app/register">Sign up here</a>.</p>
+    </main>
 </Layout>
 
 <script>

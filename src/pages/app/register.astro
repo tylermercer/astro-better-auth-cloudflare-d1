@@ -5,19 +5,21 @@ export const prerender = true;
 ---
 
 <Layout>
-    <h1>Register</h1>
-    <form id="signup-form">
-        <input type="text" name="name" placeholder="Name" required />
-        <input type="email" name="email" placeholder="Email" required />
-        <input
-            required
-            type="password"
-            name="password"
-            placeholder="Password"
-        />
-        <button type="submit">Sign up</button>
-    </form>
-    <p>Already have an account? <a href="/app/login">Sign in here</a>.</p>
+    <main class="u-guttered">
+        <h1>Register</h1>
+        <form id="signup-form">
+            <input type="text" name="name" placeholder="Name" required />
+            <input type="email" name="email" placeholder="Email" required />
+            <input
+                required
+                type="password"
+                name="password"
+                placeholder="Password"
+            />
+            <button type="submit">Sign up</button>
+        </form>
+        <p>Already have an account? <a href="/app/login">Sign in here</a>.</p>
+    </main>
 </Layout>
 <script>
     import { authClient } from "@utils/client/auth-client";

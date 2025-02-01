@@ -11,9 +11,11 @@ if (!Astro.locals.session) {
 ---
 
 <Layout>
-	<h1>My Notes</h1>
-	{JSON.stringify(Astro.locals.user)}
-	<button id="signOutButton">Sign Out</button>
+	<main class="u-guttered">
+		<h1>My Notes</h1>
+		{JSON.stringify(Astro.locals.user)}
+		<button id="signOutButton">Sign Out</button>
+	</main>
 </Layout>
 
 <script>
