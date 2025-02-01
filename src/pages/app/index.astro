@@ -12,8 +12,16 @@ if (!Astro.locals.session) {
 
 <Layout>
 	<main class="u-guttered">
-		<h1>My Notes</h1>
-		{JSON.stringify(Astro.locals.user)}
+		<h1>Home</h1>
+		<ul>
+			{
+				Object.entries(Astro.locals.session).map(([key, value]) => (
+					<li>
+						{key}: {JSON.stringify(value)}
+					</li>
+				))
+			}
+		</ul>
 		<button id="signOutButton">Sign Out</button>
 	</main>
 </Layout>
