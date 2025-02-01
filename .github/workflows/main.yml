@@ -8,8 +8,8 @@ name: Build and Deploy to Cloudflare Pages
 # - CLOUDFLARE_PROJECT_NAME
 
 on:
-  schedule: # Run at 15:00 UTC every day
-    - cron: "0 15 * * *"
+  # schedule: # Run at 15:00 UTC every day
+   # - cron: "0 15 * * *"
   push: # Run on pushes to main
     branches:
       - main
