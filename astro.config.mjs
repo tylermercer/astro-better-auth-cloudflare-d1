@@ -8,6 +8,14 @@ import rawFonts from './lib/plugins/vite/rawFonts.js';
 export default defineConfig({
   adapter: cloudflare(),
   output: 'server',
+  experimental: {
+    session: {
+      driver: 'cloudflare-kv-binding',
+      options: {
+        binding: "SESSIONS",
+      },
+    },
+  },
   markdown: {
     remarkPlugins: [
       remarkEmdash
