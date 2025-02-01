@@ -1,13 +1,7 @@
 ---
 import Layout from "@layouts/Base.astro";
 
-if (!Astro.locals.session) {
-	// Redirect to login page if the user is not authenticated
-	return Astro.redirect(
-		// `/login?returnUrl=${encodeURIComponent(Astro.url.pathname)}`,
-		`/app/login`,
-	);
-}
+const session = Astro.locals.session!;
 ---
 
 <Layout>
@@ -15,7 +9,7 @@ if (!Astro.locals.session) {
 		<h1>Home</h1>
 		<ul>
 			{
-				Object.entries(Astro.locals.session).map(([key, value]) => (
+				Object.entries(session).map(([key, value]) => (
 					<li>
 						{key}: {JSON.stringify(value)}
 					</li>
@@ -32,6 +26,6 @@ if (!Astro.locals.session) {
 		.getElementById("signOutButton")
 		?.addEventListener("click", async () => {
 			await authClient.signOut();
-			window.location.href = "/app/login";
+			window.location.href = "/login";
 		});
 </script>

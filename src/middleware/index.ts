@@ -25,5 +25,13 @@ export const onRequest = defineMiddleware(async (context, next) => {
         context.locals.session = null;
     }
 
+    if (new URL(context.request.url).pathname.startsWith('/app') && !context.locals.session) {
+        // Redirect to login page if the user is not authenticated
+        return context.redirect(
+            // `/login?returnUrl=${encodeURIComponent(Astro.url.pathname)}`,
+            `/login`,
+        );
+    }
+
     return next();
 });
