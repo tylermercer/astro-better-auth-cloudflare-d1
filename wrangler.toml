@@ -4,7 +4,7 @@ pages_build_output_dir = "./dist"
 compatibility_date = "2024-12-04"
 
 [limits]
-cpu_ms = 150
+cpu_ms = 400
 
 [[d1_databases]]
 binding = "DB"
