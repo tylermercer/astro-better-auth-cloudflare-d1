@@ -27,8 +27,8 @@ export const prerender = true;
         .getElementById("signin-form")
         ?.addEventListener("submit", async (event) => {
             event.preventDefault();
-            const email = event.target?.email.value;
-            const password = event.target?.password.value;
+            const email = (event.target as HTMLFormElement).email.value;
+            const password = (event.target as HTMLFormElement).password.value;
             const tmp = await authClient.signIn.email({
                 email,
                 password,
