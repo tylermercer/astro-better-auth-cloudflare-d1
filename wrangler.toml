@@ -8,10 +8,12 @@ compatibility_flags = ["nodejs_compat"]
 cpu_ms = 400
 
 [[d1_databases]]
-binding = "DB"
-database_name = "prod"
-database_id = "d5757f62-76bc-47d4-ae61-c70ad3995985"
+binding = "AUTH_DB"
+database_name = "prod-auth"
+# Update with your database id
+database_id = "75c95b39-677a-4c44-8ea8-2ed9088eddce"
 
 [[kv_namespaces]]
 binding = "SESSIONS"
-id = "f5d465bcd26b4c8aa47b1eaaf53c7b36"
+# Update with your namespace id
+id = "35d69d5736ad497cb1bea479b807f962"
