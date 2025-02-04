@@ -10,3 +10,7 @@ cpu_ms = 400
 binding = "DB"
 database_name = "prod"
 database_id = "d5757f62-76bc-47d4-ae61-c70ad3995985"
+
+[[kv_namespaces]]
+binding = "SESSIONS"
+id = "f5d465bcd26b4c8aa47b1eaaf53c7b36"
