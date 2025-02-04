@@ -1,8 +1,6 @@
 // @ts-check
 import cloudflare from "@astrojs/cloudflare";
 import { defineConfig } from 'astro/config';
-import remarkEmdash from './lib/plugins/remark/emdash.js';
-import rawFonts from './lib/plugins/vite/rawFonts.js';
 import generateRadixColorsSass, { GENERATE_RADIX_COLORS_SIGNATURE } from './lib/plugins/sass/radix-ui-colors/generateRadixColorsSassCustomFunction';
 
 // https://astro.build/config
@@ -10,6 +8,7 @@ export default defineConfig({
   adapter: cloudflare(),
   output: 'server',
   experimental: {
+    // Not needed for better-auth, just added for convenience in storing non-auth session data (e.g. wizard form step data)
     session: {
       driver: 'cloudflare-kv-binding',
       options: {
@@ -17,13 +16,7 @@ export default defineConfig({
       },
     },
   },
-  markdown: {
-    remarkPlugins: [
-      remarkEmdash
-    ],
-  },
   vite: {
-    plugins: [rawFonts(['.woff'])],
     ssr: {
       external: [
         'astro/container',
