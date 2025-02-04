@@ -3,7 +3,7 @@ import { db, initDb } from "@utils/db";
 import { defineMiddleware } from "astro:middleware";
 
 export const onRequest = defineMiddleware(async (context, next) => {
-    initDb(context.locals.runtime.env.DB);
+    initDb(context.locals.runtime.env.AUTH_DB);
 
     if (context.isPrerendered) return next();
 
