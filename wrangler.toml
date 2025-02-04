@@ -1,5 +1,5 @@
 #:schema node_modules/wrangler/config-schema.json
-name = "astro-cloudflare-better-auth-d1"
+name = "astro-better-auth-d1"
 pages_build_output_dir = "./dist"
 compatibility_date = "2024-12-04"
 compatibility_flags = ["nodejs_compat"]
