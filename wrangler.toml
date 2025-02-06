@@ -4,9 +4,6 @@ pages_build_output_dir = "./dist"
 compatibility_date = "2024-12-04"
 compatibility_flags = ["nodejs_compat"]
 
-[limits]
-cpu_ms = 400
-
 [[d1_databases]]
 binding = "AUTH_DB"
 database_name = "prod-auth"
