@@ -5,24 +5,49 @@ export const prerender = true;
 ---
 
 <Layout>
-    <main class="u-guttered">
+    <main class="u-guttered l-column">
         <h1>Register</h1>
-        <form id="signup-form">
-            <input type="text" name="fullname" placeholder="Name" required />
-            <input type="email" name="email" placeholder="Email" required />
-            <input
-                required
-                type="password"
-                name="password"
-                placeholder="Password"
-            />
+        <form id="signup-form" class="l-column">
+            <label>
+                Name
+                <input
+                    type="text"
+                    name="fullname"
+                    placeholder="Name"
+                    required
+                />
+            </label>
+            <label>
+                Email
+                <input type="email" name="email" placeholder="Email" required />
+            </label>
+            <label>
+                Password
+                <input
+                    required
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+                />
+            </label>
+            <div id="error" class="u-error" aria-live="polite"></div>
             <button type="submit">Sign up</button>
         </form>
         <p>Already have an account? <a href="/login">Sign in here</a>.</p>
     </main>
 </Layout>
+<!-- 
+<style lang="scss">
+    form {
+        gap: var(--space-m);
+    }
+</style> -->
+
 <script>
     import { authClient } from "@utils/client/auth-client";
+
+    const error = document.getElementById("error") as HTMLDivElement;
+
     document
         .getElementById("signup-form")
         ?.addEventListener("submit", async (event) => {
@@ -35,6 +60,11 @@ export const prerender = true;
                 email,
                 password,
             });
-            if (Boolean(tmp.error) === false) window.location.href = "/app/";
+            if (!tmp.error) {
+                window.location.href = "/app/";
+            } else {
+                const { code, message, status, statusText } = tmp.error;
+                error.innerText = `[${code}] ${message} (${status} ${statusText})`;
+            }
         });
 </script>

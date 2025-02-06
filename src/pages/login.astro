@@ -5,16 +5,23 @@ export const prerender = true;
 ---
 
 <Layout>
-    <main class="u-guttered">
+    <main class="u-guttered l-column">
         <h1>Login</h1>
-        <form id="signin-form">
-            <input type="email" name="email" placeholder="Email" required />
-            <input
-                required
-                type="password"
-                name="password"
-                placeholder="Password"
-            />
+        <form id="signin-form" class="l-column">
+            <label>
+                Email
+                <input type="email" name="email" placeholder="Email" required />
+            </label>
+            <label>
+                Password
+                <input
+                    required
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+                />
+            </label>
+            <div id="error" class="u-error" aria-live="polite"></div>
             <button type="submit">Sign In</button>
         </form>
         <p>Don't have an account? <a href="/register">Sign up here</a>.</p>
@@ -23,6 +30,9 @@ export const prerender = true;
 
 <script>
     import { authClient } from "@utils/client/auth-client";
+
+    const error = document.getElementById("error") as HTMLDivElement;
+
     document
         .getElementById("signin-form")
         ?.addEventListener("submit", async (event) => {
@@ -33,6 +43,11 @@ export const prerender = true;
                 email,
                 password,
             });
-            if (!Boolean(tmp.error)) window.location.href = "/app/";
+            if (!tmp.error) {
+                window.location.href = "/app/";
+            } else {
+                const { code, message, status, statusText } = tmp.error;
+                error.innerText = `[${code}] ${message} (${status} ${statusText})`;
+            }
         });
 </script>
