@@ -30,6 +30,9 @@
         & a:link {
             color: inherit;
         }
+        &:empty {
+            display: none;
+        }
     }
 
     .u-success {
@@ -125,15 +128,6 @@
             &::-webkit-scrollbar-track {
                 background: var(--u-styled-scrollbars-bg);
             }
-        }
-    }
-    .u-error {
-        background-color: #ffa5a5;
-        color: darkred;
-        padding: var(--space-s);
-        border-radius: 4px;
-        &:empty {
-            display: none;
         }
     }
 }

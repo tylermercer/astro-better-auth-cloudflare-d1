@@ -36,34 +36,38 @@ export const prerender = true;
         <p>Already have an account? <a href="/login">Sign in here</a>.</p>
     </main>
 </Layout>
-<!-- 
-<style lang="scss">
-    form {
-        gap: var(--space-m);
-    }
-</style> -->
 
 <script>
     import { authClient } from "@utils/client/auth-client";
 
     const error = document.getElementById("error") as HTMLDivElement;
+    const form = document.getElementById("signup-form") as HTMLFormElement;
 
-    document
-        .getElementById("signup-form")
-        ?.addEventListener("submit", async (event) => {
+    const submitButton = form.querySelector("button") as HTMLButtonElement;
+
+    form.addEventListener("submit", async (event) => {
+            if (submitButton.hasAttribute('aria-disabled')) return;
+
             event.preventDefault();
-            const name = (event.target as HTMLFormElement).fullname.value;
-            const email = (event.target as HTMLFormElement).email.value;
-            const password = (event.target as HTMLFormElement).password.value;
-            const tmp = await authClient.signUp.email({
+            error.innerText = "";
+            submitButton.setAttribute('aria-disabled', 'true');
+            
+            const name = form.fullname.value;
+            const email = form.email.value;
+            const password = form.password.value;
+            const result = await authClient.signUp.email({
                 name,
                 email,
                 password,
             });
-            if (!tmp.error) {
+
+            submitButton.removeAttribute('aria-disabled');
+            submitButton.removeAttribute('aria-label');
+
+            if (!result.error) {
                 window.location.href = "/app/";
             } else {
-                const { code, message, status, statusText } = tmp.error;
+                const { code, message, status, statusText } = result.error;
                 error.innerText = `[${code}] ${message} (${status} ${statusText})`;
             }
         });

@@ -32,17 +32,28 @@ export const prerender = true;
     import { authClient } from "@utils/client/auth-client";
 
     const error = document.getElementById("error") as HTMLDivElement;
+    const form = document.getElementById("signin-form") as HTMLFormElement;
 
-    document
-        .getElementById("signin-form")
-        ?.addEventListener("submit", async (event) => {
+    const submitButton = form.querySelector("button") as HTMLButtonElement;
+
+    form.addEventListener("submit", async (event) => {
+            if (submitButton.hasAttribute('aria-disabled')) return;
+
             event.preventDefault();
-            const email = (event.target as HTMLFormElement).email.value;
-            const password = (event.target as HTMLFormElement).password.value;
+            error.innerText = "";
+            submitButton.setAttribute('aria-disabled', 'true');
+            submitButton.setAttribute('aria-label', 'Loading');
+
+            const email = form.email.value;
+            const password = form.password.value;
             const tmp = await authClient.signIn.email({
                 email,
                 password,
             });
+            
+            submitButton.removeAttribute('aria-disabled');
+            submitButton.removeAttribute('aria-label');
+
             if (!tmp.error) {
                 window.location.href = "/app/";
             } else {
