@@ -9,7 +9,7 @@ A simple setup for MPA auth with Astro, Better-Auth, and Cloudflare D1
 - [X] Get migrations for local auth DB working
 - [x] Get register/login working in production
 - [x] Change local DB access to use Miniflare instead of directly accessing `.sqlite` file from `.wrangler` directory
-- [x] Document needed environment variables (see `.env.example` and `.dev.vars.example`)
+- [x] Document needed environment variables (see [.env.example](/.env.example) and [.dev.vars.example](/.dev.vars.example))
 - [ ] Add `init` script in package.json
 - [ ] Document needed Cloudflare bindings and setup steps
 - [ ] Document setting up local auth DB
