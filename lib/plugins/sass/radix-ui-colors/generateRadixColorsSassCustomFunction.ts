@@ -1,12 +1,11 @@
 import * as sass from 'sass';
 import { generateRadixColors } from './generateRadixColors';
 import { OrderedMap } from 'immutable';
+import type { CustomFunction } from 'sass';
 
 type Data = ReturnType<typeof generateRadixColors>;
 
-export const GENERATE_RADIX_COLORS_SIGNATURE = 'generateRadixColors($appearance, $accent, $gray, $background)';
-
-export default function (
+function colorFunction(
     [
         appearanceJson,
         accentJson,
@@ -58,3 +57,7 @@ export default function (
 
     return new sass.SassMap(OrderedMap(map));
 }
+
+export const generateRadixColorsSassFunctions = {
+    ['generateRadixColors($appearance, $accent, $gray, $background)']: colorFunction
+} as unknown as Record<string, CustomFunction<"async">>

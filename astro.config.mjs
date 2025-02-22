@@ -1,7 +1,7 @@
 // @ts-check
 import cloudflare from "@astrojs/cloudflare";
 import { defineConfig } from 'astro/config';
-import generateRadixColorsSass, { GENERATE_RADIX_COLORS_SIGNATURE } from './lib/plugins/sass/radix-ui-colors/generateRadixColorsSassCustomFunction';
+import { generateRadixColorsSassFunctions } from './lib/plugins/sass/radix-ui-colors/generateRadixColorsSassCustomFunction';
 
 // https://astro.build/config
 export default defineConfig({
@@ -32,8 +32,7 @@ export default defineConfig({
       preprocessorOptions: {
         scss: {
           functions: {
-            // @ts-ignore
-            [GENERATE_RADIX_COLORS_SIGNATURE]: generateRadixColorsSass
+            ...generateRadixColorsSassFunctions
           }
         }
       }
