@@ -57,7 +57,7 @@ jobs:
         env:
           PUBLIC_COMMIT_HASH: ${{ steps.extract_vars.outputs.sha_short }}
         run: |
-          npm ci
+          npm ci --ignore-scripts
           npm run build
 
       - name: Deploy to Cloudflare Pages
